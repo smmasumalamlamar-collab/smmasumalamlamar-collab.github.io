@@ -57,7 +57,7 @@ window.SITE.experience = {
     "Effect of Alkali in Dyeing Process, Chem Tech Processors, India (2005)"
   ],
   "industry": {
-    "intro": "Before and alongside teaching, I worked inside Bangladesh's export garment industry: first as a merchandiser for global brands, later as a technical consultant to a knitwear manufacturer. That work, from first sample to final shipment, is where my research questions about quality, productivity and supply chains come from.",
+    "intro": "Before and alongside teaching, I worked inside Bangladesh's export garment industry, first as a merchandiser for global brands and later as a technical consultant to a knitwear manufacturer. That work, from first sample to final shipment, is where my research questions about quality, productivity and supply chains come from.",
     "workflow": [
       [
         "Product development",

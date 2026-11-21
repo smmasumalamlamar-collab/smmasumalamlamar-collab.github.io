@@ -1,19 +1,37 @@
 window.SITE = window.SITE || {};
 window.SITE.projects = {
-  "intro": "My projects move from the sewing line outward: detecting defects, predicting their causes, measuring operator and process performance, and finally designing the supply chains that garments travel through.",
+  "intro": "My projects follow the garment from the sewing line outward: detecting defects, predicting their causes, measuring operator performance, and designing the supply chains that products move through.",
   "featured": {
     "status": "ongoing",
     "label": "Ongoing · graduate research, Lamar University",
-    "title": "AI-driven fabric and stitching defect detection",
+    "title": "AI-assisted garment defect detection",
     "text": [
-      "Manual inspection in garment factories is slow and error-prone, and defects that slip through become rework, rejected shipments and lost productivity. This research asks how computer vision and machine learning can identify and classify fabric and stitching defects in real time, inside the quality-control frameworks factories already use.",
-      "The goal is scalable, cost-effective inspection that reduces manual errors and supports smart manufacturing in the apparel sector."
+      "Garment factories still rely heavily on manual inspection. It is slow, inconsistent between inspectors, and defects that slip through turn into rework, rejected shipments and lost productivity.",
+      "I am developing computer-vision and machine-learning models that identify and classify fabric and stitching defects in real time, designed to fit the quality-control frameworks factories already use. My current research extends this work toward multimodal AI for garment defect detection."
     ],
     "details": [
-      ["Research question", "Can deep learning detect and classify fabric and stitching defects reliably enough to support real-time inspection on the production line?"],
-      ["My role", "Graduate researcher at Lamar University, bringing hands-on knowledge of sewing-floor defects and inspection practice to the problem."],
-      ["Methods", "Computer vision and deep learning in Python with OpenCV and TensorFlow, combined with traditional quality-control frameworks."],
-      ["Findings", "Results will be added here once they are published or approved for release."]
+      [
+        "The problem",
+        "Manual inspection is slow and error-prone, and missed defects become costly rework and rejected shipments."
+      ],
+      [
+        "My contribution",
+        "I define the inspection problem from first-hand factory experience and develop detection and classification models in Python with OpenCV and TensorFlow."
+      ],
+      [
+        "Evaluation method",
+        "The evaluation design will be described here when the study is published."
+      ],
+      [
+        "Verified findings",
+        "No results have been published yet. Findings will be added once they are peer-reviewed or approved for release."
+      ]
+    ],
+    "pipeline": [
+      "Fabric or garment image",
+      "Defect detection",
+      "Defect classification",
+      "Quality-control decision"
     ]
   },
   "items": [
