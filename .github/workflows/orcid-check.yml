@@ -1,0 +1,59 @@
+name: Weekly ORCID check
+
+# Runs every Monday at 14:00 UTC (8:00 or 9:00 Central), and whenever you
+# click "Run workflow" on the Actions tab. It never publishes anything:
+# if ORCID has new works it opens a pull request for you to review.
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: orcid-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compare ORCID with the site
+        id: orcid
+        run: python scripts/orcid_check.py
+
+      - name: Check the drafted content
+        if: steps.orcid.outputs.changed == 'true'
+        run: python scripts/validate.py --allow-drafts
+
+      - name: Open or update a pull request for review
+        if: steps.orcid.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH=orcid-update
+          git config user.name "orcid-check-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add site/content/publications.js
+          git commit -m "Draft: new works found on ORCID"
+          git push --force origin "$BRANCH"
+          if gh pr view "$BRANCH" --json state -q .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file orcid-report.md
+          else
+            gh pr create --base main --head "$BRANCH" \
+              --title "Review: new publications found on ORCID" \
+              --body-file orcid-report.md
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ -f orcid-report.md ]; then cat orcid-report.md >> "$GITHUB_STEP_SUMMARY"; fi
