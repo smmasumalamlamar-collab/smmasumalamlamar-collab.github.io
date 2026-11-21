@@ -1,4 +1,4 @@
-# S. M. Masum Alam — academic portfolio
+# S M Masum Alam — academic portfolio
 
 This repository holds the website. Every change goes through a **pull request**:
 you see a preview link first, and the live site only changes when you click **Merge**.
